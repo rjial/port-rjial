@@ -3,7 +3,6 @@
     "name": "index",
     "path": "/",
     "component": "/run/media/rjial/Pandora-Box/Project/Web/porto-rjial/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_0ce40ec7"
+    "chunkName": "pages/index"
   }
 ]
