@@ -8,5 +8,6 @@ export default Vue.extend({
 <template>
     <div>
         <span class="text-xl">Rizal Abdul Basith</span>
+        <span>Coba</span>
     </div>
 </template>
