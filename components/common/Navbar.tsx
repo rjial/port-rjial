@@ -15,13 +15,13 @@ export default () => {
           <Link href="/about"><div className="py-2 px-4 hover:bg-white/10 rounded-md transition ease-in-out">About</div></Link>
           <Link href="/contact"><div className="py-2 px-4 hover:bg-white/10 rounded-md transition ease-in-out">Contact</div></Link>
         </div>
-        <div className="block lg:hidden relative">
+        <div className="block lg:hidden static">
           <button onClick={() => setShowNav(!showNav)} className="py-2 px-4 z-50  text-white hover:bg-white/10 rounded-md transition ease-in-out ">
             <RxHamburgerMenu className="text-white text-2xl" />
           </button>
           
-          {showNav ? <><div onClick={() => setShowNav(!showNav)} className="absolute w-screen h-screen -right-16 -top-10 z-30">
-          </div><div className="absolute bottom-120 w-screen -right-16 mt-3 z-40">
+          {showNav ? <><div onClick={() => setShowNav(!showNav)} className="absolute w-screen h-screen left-0 top-0 z-30">
+          </div><div className="absolute bottom-120 w-screen right-0 mt-3 z-40">
             <div className="bg-[#1e1e1e] outline outline-1 outline-zinc-800 mx-16 p-4 rounded-md text-white flex flex-col space-y-3">
               <Link onClick={() => setShowNav(!showNav)} href="/" className="py-2 px-4 hover:bg-white/10 rounded-md transition ease-in-out">Home</Link>
               <Link onClick={() => setShowNav(!showNav)} href="/about" className="py-2 px-4 hover:bg-white/10 rounded-md transition ease-in-out">About</Link>
