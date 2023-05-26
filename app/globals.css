@@ -3,10 +3,5 @@
 @tailwind utilities;
 
 body {
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(30, 30, 30, 100%)
-    )
-    rgb(25, 25, 25, 100%);
+  background: rgb(30, 30, 30, 100%)
 }
