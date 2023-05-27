@@ -1,6 +1,8 @@
+'use client'
 import Image from 'next/image'
 import {BsLinkedin, BsGithub, BsInstagram} from 'react-icons/bs'
 import dp from "../public/dp.jpg"
+import {motion} from 'framer-motion'
 
 export default function Home() {
   return (
@@ -19,9 +21,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='hidden lg:block'>
+        <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0, transition: {delay: 0.4}}} exit={{opacity: 0, y: 20}} className='hidden lg:block'>
           <Image src={dp} alt="display picture" priority={false} loading='lazy' className='h-96 w-96 rounded-full' unoptimized={true} />
-        </div>
+        </motion.div>
       </div>
     </main>
   )
