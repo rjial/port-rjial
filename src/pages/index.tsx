@@ -1,8 +1,13 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Inter } from "next/font/google";
 import { LuRefreshCw } from 'react-icons/lu'
 import { BsArrowUpRight } from 'react-icons/bs'
 import { useRouter } from 'next/router'
+import homescreen1 from '../../public/homescreen1.png'
+import homescreenmaps from '../../public/homescreenmaps.png'
+import latestproject from '../../public/latest_project.webp'
+import map_light from '../../public/map_light.webp'
+import projects from '../../public/projects.webp'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +27,7 @@ const menuItems: Array<MenuItems> = [
 const Card = ({ children, className }: { children: React.ReactNode, className?: string }) => {
   return <div className={`p-10 rounded-3xl ${className}`}>{children}</div>;
 };
-const CardImage = ({ children, className, src, alt, width, height }: { children: React.ReactNode, className?: string, src: string, alt: string, width: number, height: number }) => {
+const CardImage = ({ children, className, src, alt, width, height }: { children: React.ReactNode, className?: string, src: string | StaticImageData, alt: string, width: number, height: number }) => {
 
   return (
     <div className={`rounded-3xl ${className}`}>
@@ -35,8 +40,8 @@ const CardImage = ({ children, className, src, alt, width, height }: { children:
 export default function Home() {
   const { pathname } = useRouter()
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <div className="grid grid-cols-2 grid-rows-4 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-4 gap-4">
         <div className="col-span-2 m-0">
           <Card className="relative bg-white h-72">
             <div className="absolute top-0 right-0 p-6">
@@ -46,7 +51,7 @@ export default function Home() {
               <Image
                 width={90}
                 height={90}
-                src="https://rhomadoni.com/wp-content/uploads/2021/12/homescreen1.png"
+                src={homescreen1}
                 alt="avatar1"
               ></Image>
               <span style={{ fontFamily: "Silka" }} className="leading-7">
@@ -86,21 +91,21 @@ export default function Home() {
           </Card>
         </div>
         <div className="col-span-2">
-          <CardImage width={1083} height={361} alt="latest project" src="https://rhomadoni.com/images/latest_project.webp" className="bg-white h-72 relative">
+          <CardImage width={1083} height={361} alt="latest project" src={latestproject} className="bg-white h-72 relative">
             <div className="absolute bottom-0 left-0 p-5">
               <button style={{ fontFamily: "Silka" }} className="bg-white rounded-full outline outline-2 outline-gray-300 p-3 text-sm flex items-center">Latest Project<BsArrowUpRight className="ml-3" /></button>
             </div>
           </CardImage>
         </div>
       </div>
-      <div className="grid grid-cols-2 grid-rows-4 gap-4">
+      <div className="grid lg:grid-cols-2 grid-rows-4 gap-4">
         <div>
-          <CardImage width={1083} height={361} alt="latest project" src="https://rhomadoni.com/images/map_light.webp" className="bg-white flex justify-center items-center h-72 relative">
-            <Image src="https://rhomadoni.com/wp-content/uploads/2021/12/homescreenmaps.png" width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
+          <CardImage width={1083} height={361} alt="latest project" src={map_light} className="bg-white flex justify-center items-center h-72 relative">
+            <Image src={homescreenmaps} width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
           </CardImage>
         </div>
         <div className="row-span-2 col-span-1">
-          <CardImage width={780} height={1444} alt="latest project" src="https://rhomadoni.com/images/projects.webp" className="bg-white h-full relative">
+          <CardImage width={780} height={1444} alt="latest project" src={projects} className="bg-white h-full relative">
             <div className="absolute bottom-0 left-0 p-5">
               <span style={{ fontFamily: "Silka" }} className="bg-white rounded-full box-solid-shadow p-3 text-sm flex items-center">Latest Project<BsArrowUpRight className="ml-3" /></span>
             </div>
