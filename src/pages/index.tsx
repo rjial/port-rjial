@@ -27,12 +27,12 @@ const menuItems: Array<MenuItems> = [
 const Card = ({ children, className }: { children: React.ReactNode, className?: string }) => {
   return <div className={`p-10 rounded-3xl ${className}`}>{children}</div>;
 };
-const CardImage = ({ children, className, src, alt, width, height }: { children: React.ReactNode, className?: string, src: string | StaticImageData, alt: string, width: number, height: number }) => {
+const CardImage = ({ children, className, src, alt, width, height }: { children: React.ReactNode, className?: string, src: string, alt: string, width: number, height: number }) => {
 
   return (
     <div className={`rounded-3xl ${className}`}>
       {children}
-      <Image alt={alt} src={src} width={width} height={height} className="rounded-3xl object-cover w-full h-full" />
+      <img alt={alt} src={src} width={width} height={height} className="rounded-3xl object-cover w-full h-full" />
     </div>
   );
 };
@@ -48,12 +48,12 @@ export default function Home() {
               <span className="flex items-center px-4 py-3 text-sm rounded-full box-solid-shadow" style={{ fontFamily: "Silka Medium" }}><LuRefreshCw className="text-lg mr-3" />Toggle Lockdown</span>
             </div>
             <div className="flex flex-col space-y-5">
-              <Image
+              <img
                 width={90}
                 height={90}
                 src="/homescreen1.png"
                 alt="avatar1"
-              ></Image>
+              ></img>
               <span style={{ fontFamily: "Silka" }} className="leading-7">
                 hello, im <span style={{ fontFamily: "Moranga Bold" }} className="text-2xl">dhoni</span>,
                 <br />
@@ -101,7 +101,7 @@ export default function Home() {
       <div className="grid lg:grid-cols-2 grid-rows-4 gap-4">
         <div>
           <CardImage width={1083} height={361} alt="latest project" src="/map_light.webp" className="bg-white flex justify-center items-center h-72 relative">
-            <Image src="/homescreenmaps.png" width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
+            <img src="/homescreenmaps.png" width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
           </CardImage>
         </div>
         <div className="row-span-2 col-span-1">
