@@ -9,8 +9,17 @@ const nextConfig = {
         port: "",
         pathname: "/wp-content/**",
       },
+      {
+        protocol: "https",
+        hostname: "rhomadoni.com",
+        port: "",
+        pathname: "/images/**",
+      },
     ],
   },
+  experimental: {
+    esmExternals: false,
+  }
 };
 
 module.exports = nextConfig;

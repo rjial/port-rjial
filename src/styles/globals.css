@@ -12,3 +12,20 @@
   src: url("https://rhomadoni.com/wp-content/themes/prostarterwp/fonts/silka-medium.woff")
     format("woff");
 }
+
+@font-face {
+  font-family: "Silka";
+  src: url("https://rhomadoni.com/wp-content/themes/prostarterwp/fonts/silka-regular.woff")
+    format("woff");
+}
+
+.box-solid-shadow {
+  box-shadow: #f0f2f8 0 0 0 2px;
+  transition: box-shadow .2s ease-out 0s;
+}
+
+.box-solid-shadow:hover {
+  box-shadow: #f0f2f8 0 0 0 5px;
+  cursor: pointer;
+  transition: box-shadow .2s ease-out 0s;
+}
