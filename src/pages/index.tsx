@@ -51,7 +51,7 @@ export default function Home() {
               <Image
                 width={90}
                 height={90}
-                src={homescreen1}
+                src="/homescreen1.png"
                 alt="avatar1"
               ></Image>
               <span style={{ fontFamily: "Silka" }} className="leading-7">
@@ -91,7 +91,7 @@ export default function Home() {
           </Card>
         </div>
         <div className="col-span-2">
-          <CardImage width={1083} height={361} alt="latest project" src={latestproject} className="bg-white h-72 relative">
+          <CardImage width={1083} height={361} alt="latest project" src="/latest_project.webp" className="bg-white h-72 relative">
             <div className="absolute bottom-0 left-0 p-5">
               <button style={{ fontFamily: "Silka" }} className="bg-white rounded-full outline outline-2 outline-gray-300 p-3 text-sm flex items-center">Latest Project<BsArrowUpRight className="ml-3" /></button>
             </div>
@@ -100,12 +100,12 @@ export default function Home() {
       </div>
       <div className="grid lg:grid-cols-2 grid-rows-4 gap-4">
         <div>
-          <CardImage width={1083} height={361} alt="latest project" src={map_light} className="bg-white flex justify-center items-center h-72 relative">
-            <Image src={homescreenmaps} width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
+          <CardImage width={1083} height={361} alt="latest project" src="/map_light.webp" className="bg-white flex justify-center items-center h-72 relative">
+            <Image src="/homescreenmaps.png" width={301} height={400} alt="avatar 2" className="h-3/6 w-3/6 rounded-full object-scale-down absolute p-8 outline-white outline outline-3 bg-blue-300/50" />
           </CardImage>
         </div>
         <div className="row-span-2 col-span-1">
-          <CardImage width={780} height={1444} alt="latest project" src={projects} className="bg-white h-full relative">
+          <CardImage width={780} height={1444} alt="latest project" src="/projects.webp" className="bg-white h-full relative">
             <div className="absolute bottom-0 left-0 p-5">
               <span style={{ fontFamily: "Silka" }} className="bg-white rounded-full box-solid-shadow p-3 text-sm flex items-center">Latest Project<BsArrowUpRight className="ml-3" /></span>
             </div>
