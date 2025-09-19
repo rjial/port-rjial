@@ -693,6 +693,26 @@ function EditorMode({ songData, setSongData, params }: { songData: SongData, set
     }
   }
 
+  const deleteLyric = (lyricToDelete: Lyric) => {
+    if (confirm('Are you sure you want to delete this lyric?')) {
+      setEditData({
+        ...editData,
+        lyrics: editData.lyrics.filter(lyric => 
+          !(lyric.time === lyricToDelete.time && lyric.text === lyricToDelete.text)
+        )
+      })
+      // If we're editing this lyric, cancel the edit
+      if (editingLyric && editingLyric.time === lyricToDelete.time && editingLyric.text === lyricToDelete.text) {
+        cancelEdit()
+      }
+    }
+  }
+
+  const getLyricEndTime = (currentIndex: number): number | null => {
+    const nextLyric = editData.lyrics[currentIndex + 1]
+    return nextLyric ? nextLyric.time : null
+  }
+
   const cancelEdit = () => {
     setEditingLyric(null)
     setCurrentLyricText('')
@@ -922,6 +942,9 @@ function EditorMode({ songData, setSongData, params }: { songData: SongData, set
                 <span>Enter Add/Update Lyric</span>
                 <span>Esc Cancel Edit</span>
               </div>
+              <div className="mt-1 text-xs text-gray-400">
+                💡 Click 🗑️ button to delete lyrics
+              </div>
               {lyricStartTime !== null && (
                 <div className="mt-2 p-2 bg-orange-900/30 border border-orange-500/30 rounded text-xs">
                   <span className="text-orange-300">
@@ -986,43 +1009,69 @@ function EditorMode({ songData, setSongData, params }: { songData: SongData, set
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {editData.lyrics.map((lyric, index) => (
-                    <div
-                      key={index}
-                      className={`p-4 rounded-lg transition-all duration-200 relative ${
-                        editingLyric?.time === lyric.time && editingLyric?.text === lyric.text
-                          ? 'bg-blue-700 border-2 border-blue-500 text-white z-10'
-                          : currentLyric?.time === lyric.time
-                          ? 'bg-blue-600 text-white shadow-xl z-20 my-4'
-                          : 'bg-gray-700 hover:bg-gray-600 text-gray-300 z-0'
-                      }`}
-                      style={{
-                        marginTop: currentLyric?.time === lyric.time ? '16px' : undefined,
-                        marginBottom: currentLyric?.time === lyric.time ? '16px' : undefined,
-                      }}
-                    >
-                      <div className="flex justify-between items-start">
-                        <span
-                          className="flex-1 cursor-pointer"
-                          onClick={() => jumpToLyric(lyric.time)}
-                        >
-                          {lyric.text}
-                        </span>
-                        <div className="flex items-center space-x-2 ml-2">
-                          <div className="text-xs opacity-75 text-right">
-                            <div>{formatTimeWithMilliseconds(lyric.time)}</div>
-                          </div>
-                          <button
-                            onClick={() => editLyric(lyric)}
-                            className="text-yellow-400 hover:text-yellow-300 text-sm"
-                            title="Edit lyric"
+                  {editData.lyrics.map((lyric, index) => {
+                    const endTime = getLyricEndTime(index)
+                    const duration = endTime ? endTime - lyric.time : null
+                    
+                    return (
+                      <div
+                        key={index}
+                        className={`p-4 rounded-lg transition-all duration-200 relative ${
+                          editingLyric?.time === lyric.time && editingLyric?.text === lyric.text
+                            ? 'bg-blue-700 border-2 border-blue-500 text-white z-10'
+                            : currentLyric?.time === lyric.time
+                            ? 'bg-blue-600 text-white shadow-xl z-20 my-4'
+                            : 'bg-gray-700 hover:bg-gray-600 text-gray-300 z-0'
+                        }`}
+                        style={{
+                          marginTop: currentLyric?.time === lyric.time ? '16px' : undefined,
+                          marginBottom: currentLyric?.time === lyric.time ? '16px' : undefined,
+                        }}
+                      >
+                        <div className="flex justify-between items-start">
+                          <span
+                            className="flex-1 cursor-pointer pr-2"
+                            onClick={() => jumpToLyric(lyric.time)}
                           >
-                            ✏️
-                          </button>
+                            {lyric.text}
+                          </span>
+                          <div className="flex items-center space-x-3 ml-2">
+                            <div className="text-xs opacity-75 text-right">
+                              <div className="font-mono">
+                                Start: {formatTimeWithMilliseconds(lyric.time)}
+                              </div>
+                              {endTime && (
+                                <div className="font-mono text-gray-400">
+                                  End: {formatTimeWithMilliseconds(endTime)}
+                                </div>
+                              )}
+                              {duration && (
+                                <div className="font-mono text-green-400">
+                                  Duration: {formatTimeWithMilliseconds(duration)}
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex flex-col space-y-1">
+                              <button
+                                onClick={() => editLyric(lyric)}
+                                className="text-yellow-400 hover:text-yellow-300 text-sm transition-colors duration-200"
+                                title="Edit lyric"
+                              >
+                                ✏️
+                              </button>
+                              <button
+                                onClick={() => deleteLyric(lyric)}
+                                className="text-red-400 hover:text-red-300 text-sm transition-colors duration-200"
+                                title="Delete lyric"
+                              >
+                                🗑️
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               )
             ) : (
