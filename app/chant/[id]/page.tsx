@@ -12,7 +12,6 @@ export async function generateStaticParams() {
 
 // Server-side data fetching
 export default async function ChantPage({ params }: { params: Promise<{ id: string }> }) {
-  // Try to fetch server-side data
   const { id } = await params
   const serverData = await getLyricData(id)
   
