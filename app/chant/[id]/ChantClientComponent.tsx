@@ -140,33 +140,19 @@ export default function ChantClientComponent({ params, initialData }: ChantClien
     }
   }, [isEditorMode, player])
 
-  // Save songData to localStorage and API whenever it changes
+  // Save songData to localStorage whenever it changes (no API in static mode)
   useEffect(() => {
     if (songData.youtubeId) {
       const storageKey = `songData-${params.id}`
       localStorage.setItem(storageKey, JSON.stringify(songData))
-      
-      // Also save to API (but don't await to avoid blocking UI)
-      saveToAPI(songData).catch(console.error)
     }
   }, [songData, params.id])
 
+  // For static deployment - no API available
   const saveToAPI = async (data: SongData) => {
-    try {
-      const response = await fetch(`/api/lyrics/${params.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      
-      if (!response.ok) {
-        throw new Error('Failed to save to API')
-      }
-    } catch (error) {
-      console.error('Error saving to API:', error)
-    }
+    // In static mode, we only save to localStorage
+    // Users should export JSON and manually add to public/data/lyrics/ for persistence
+    console.log('Static mode: Data saved to localStorage only. Use Export button to save permanently.')
   }
 
   const initializePlayer = () => {
@@ -356,14 +342,14 @@ export default function ChantClientComponent({ params, initialData }: ChantClien
             onClick={async () => {
               try {
                 await saveToAPI(songData)
-                alert('Saved to API successfully!')
+                alert('Saved to localStorage! Use Export button to download JSON file for permanent storage.')
               } catch (error) {
-                alert('Failed to save to API')
+                alert('Saved to localStorage only (static mode)')
               }
             }}
             className="bg-primary hover:bg-primary/80 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
           >
-            🌐 Save to API
+            💾 Save Local
           </button>
           
           <button

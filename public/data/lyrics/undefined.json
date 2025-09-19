@@ -1,0 +1,55 @@
+{
+  "title": "Never Gonna Give You Up",
+  "author": "Rick Astley",
+  "youtubeId": "undefined",
+  "lyrics": [
+    {
+      "time": 0,
+      "text": "We're no strangers to love"
+    },
+    {
+      "time": 3000,
+      "text": "You know the rules and so do I"
+    },
+    {
+      "time": 6500,
+      "text": "A full commitment's what I'm thinking of"
+    },
+    {
+      "time": 10000,
+      "text": "You wouldn't get this from any other guy"
+    },
+    {
+      "time": 14000,
+      "text": "I just wanna tell you how I'm feeling"
+    },
+    {
+      "time": 18000,
+      "text": "Gotta make you understand"
+    },
+    {
+      "time": 21000,
+      "text": "Never gonna give you up"
+    },
+    {
+      "time": 23500,
+      "text": "Never gonna let you down"
+    },
+    {
+      "time": 26000,
+      "text": "Never gonna run around and desert you"
+    },
+    {
+      "time": 30000,
+      "text": "Never gonna make you cry"
+    },
+    {
+      "time": 32500,
+      "text": "Never gonna say goodbye"
+    },
+    {
+      "time": 35000,
+      "text": "Never gonna tell a lie and hurt you"
+    }
+  ]
+}

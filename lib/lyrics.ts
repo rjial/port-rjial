@@ -24,7 +24,7 @@ export async function getAllLyricIds(): Promise<string[]> {
 
 export async function getLyricData(id: string) {
   try {
-    // For server-side rendering, read directly from file system
+    // For server-side rendering (build time), read directly from file system
     if (typeof window === 'undefined') {
       const { readFile } = await import('fs/promises')
       const { join } = await import('path')
@@ -41,8 +41,8 @@ export async function getLyricData(id: string) {
       return JSON.parse(fileContent)
     }
     
-    // For client-side, use fetch API
-    const response = await fetch(`/api/lyrics/${id}`, {
+    // For client-side, fetch from static JSON files in public directory
+    const response = await fetch(`/data/lyrics/${id}.json`, {
       cache: 'force-cache'
     })
     
